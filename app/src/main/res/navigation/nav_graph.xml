@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/chooseItem2">
+
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.example.inventory.ItemListFragment"
+        android:label="Order history"
+        tools:layout="@layout/item_list_fragment">
+        <action
+            android:id="@+id/action_itemListFragment_to_chooseItem2"
+            app:destination="@id/chooseItem2" />
+        <action
+            android:id="@+id/action_itemListFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseItem2"
+        android:name="com.example.inventory.ChooseItem"
+        android:label="{title}"
+        tools:layout="@layout/fragment_choose_item" >
+        <action
+            android:id="@+id/action_chooseItem2_to_quanitityFragment2"
+            app:destination="@id/quanitityFragment2" />
+        <action
+            android:id="@+id/action_chooseItem2_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+        <action
+            android:id="@+id/action_chooseItem2_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Choose" />
+        <argument
+            android:name="itemId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/quanitityFragment2"
+        android:name="com.example.inventory.QuanitityFragment"
+        android:label="Quantity" >
+        <action
+            android:id="@+id/action_quanitityFragment2_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.example.inventory.ItemDetailFragment"
+        android:label="@string/item_detail_fragment_title"
+        tools:layout="@layout/fragment_item_detail" >
+        <argument
+            android:name="itemId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_chooseItem2"
+            app:destination="@id/chooseItem2"
+            app:popUpTo="@id/chooseItem2" />
+        <action
+            android:id="@+id/action_itemDetailFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+</navigation>
